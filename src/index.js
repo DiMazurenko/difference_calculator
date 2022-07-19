@@ -1,51 +1,24 @@
-import { cwd } from 'node:process';
-import { resolve } from 'path';
-import { readFileSync } from 'node:fs';
-import _ from 'lodash';
+import { readFile, sortUnionArrays } from './utility.js';
+import getComparison from './comparison.js';
 
 const genDiff = (filepath1, filepath2) => {
-  const getPath = (path) => resolve(cwd(), path);
-  const firstPath = getPath(filepath1);
-  const secondPath = getPath(filepath2);
-
-  const firstData = readFileSync(firstPath, 'utf-8');
-  const secondData = readFileSync(secondPath, 'utf-8');
+  const firstData = readFile(filepath1);
+  const secondData = readFile(filepath2);
 
   const objOne = JSON.parse(firstData);
   const objTwo = JSON.parse(secondData);
 
-  const keys = _.sortBy(_.union(Object.keys(objOne), Object.keys(objTwo)));
+  const keysObjOne = Object.keys(objOne);
+  const keysObjTwo = Object.keys(objTwo);
 
-  const cb = (acc, key) => {
-    const value1 = objOne[key];
-    const value2 = objTwo[key];
-    let ac = acc;
+  const sortKeys = sortUnionArrays(keysObjOne, keysObjTwo);
 
-    if (_.has(objOne, key) && !_.has(objTwo, key)) {
-      ac = `${acc}
-      - ${key}:${value1}`;
-    }
-    if (!_.has(objOne, key) && _.has(objTwo, key)) {
-      ac = `${acc}
-      + ${key}:${value2}`;
-    }
-    if (_.has(objOne, key) && _.has(objTwo, key) && value1 === value2) {
-      ac = `${acc}
-        ${key}:${value1}`;
-    }
-    if (_.has(objOne, key) && _.has(objTwo, key) && value1 !== value2) {
-      ac = `${acc}
-      - ${key}:${value1}
-      + ${key}:${value2}`;
-    }
-    return ac;
-  };
+  const comparisonObj = getComparison(sortKeys, objOne, objTwo);
 
-  const result = keys.reduce(cb, '');
-  const formatResult = `{${result}
+  const result = `{${comparisonObj}
 }`;
 
-  return formatResult;
+  return result;
 };
 
 export default genDiff;
