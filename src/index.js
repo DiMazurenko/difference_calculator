@@ -1,9 +1,9 @@
 import { readFile, getFileName } from './utility.js';
 import getTree from './tree.js';
 import parse from './parsers.js';
-import getStylish from './format/stylish.js';
+import getFormat from './formatters/index.js';
 
-const genDiff = (filepath1, filepath2) => {
+const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
   const fileNameFilepath1 = getFileName(filepath1);
   const fileNameFilepath2 = getFileName(filepath2);
 
@@ -15,7 +15,7 @@ const genDiff = (filepath1, filepath2) => {
 
   const tree = getTree(objOne, objTwo);
 
-  const result = getStylish(tree);
+  const result = getFormat(tree, formatName);
 
   return result;
 };
