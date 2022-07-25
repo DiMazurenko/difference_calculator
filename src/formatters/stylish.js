@@ -24,21 +24,15 @@ export default (tree) => {
     switch (type) {
       case 'root': {
         const newChildren = children.flatMap((child) => iter(child, depth + 1));
-        return `{\n${newChildren.join('\n')}\n}`;
-      }
+        return `{\n${newChildren.join('\n')}\n}`; }
 
       case 'parent': {
         const newChildren = children.flatMap((child) => iter(child, depth + 1));
-        return `${makeIndent(depth)}  ${key}: {\n${newChildren.join('\n')}\n${makeIndent(depth)}  }`;
-      }
+        return `${makeIndent(depth)}  ${key}: {\n${newChildren.join('\n')}\n${makeIndent(depth)}  }`; }
 
-      case 'added': {
-        return `${makeIndent(depth)}+ ${key}: ${newValue(value, depth)}`;
-      }
+      case 'added': { return `${makeIndent(depth)}+ ${key}: ${newValue(value, depth)}`; }
 
-      case 'deleted': {
-        return `${makeIndent(depth)}- ${key}: ${newValue(value, depth)}`;
-      }
+      case 'deleted': { return `${makeIndent(depth)}- ${key}: ${newValue(value, depth)}`; }
 
       case 'changed': {
         const firstElement = `${makeIndent(depth)}- ${key}: ${newValue(
@@ -46,15 +40,11 @@ export default (tree) => {
           depth,
         )}`;
         const secondElement = `${makeIndent(depth)}+ ${key}: ${newValue(value2, depth)}`;
-        return `${firstElement}\n${secondElement}`;
-      }
+        return `${firstElement}\n${secondElement}`; }
 
-      case 'unchanged': {
-        return `${makeIndent(depth)}  ${key}: ${newValue(value, depth)}`;
-      }
+      case 'unchanged': { return `${makeIndent(depth)}  ${key}: ${newValue(value, depth)}`; }
 
-      default:
-        throw new Error(`Unknown type: '${type}' of node!`);
+      default: throw new Error(`Unknown type: '${type}' of node!`);
     }
   };
 
