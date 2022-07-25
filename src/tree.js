@@ -47,7 +47,7 @@ const tree = (objOne, objTwo) => {
     return {
       key,
       type: 'unchanged',
-      value1,
+      value: value1,
     };
   });
 

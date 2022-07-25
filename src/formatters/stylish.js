@@ -55,7 +55,7 @@ export default (tree) => {
       }
 
       case 'unchanged': {
-        return `${makeIndent(depth)}  ${key}: ${newValue(value1, depth)}`;
+        return `${makeIndent(depth)}  ${key}: ${newValue(value, depth)}`;
       }
 
       default:
