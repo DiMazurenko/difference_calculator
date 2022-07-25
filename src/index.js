@@ -3,7 +3,7 @@ import getTree from './tree.js';
 import parse from './parsers.js';
 import getStylish from './format/stylish.js';
 
-const genDiff = (filepath1, filepath2, format = 'stylish') => {
+const genDiff = (filepath1, filepath2) => {
   const fileNameFilepath1 = getFileName(filepath1);
   const fileNameFilepath2 = getFileName(filepath2);
 
