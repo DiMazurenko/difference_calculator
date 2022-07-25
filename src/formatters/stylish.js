@@ -29,9 +29,7 @@ export default (tree) => {
 
       case 'parent': {
         const newChildren = children.flatMap((child) => iter(child, depth + 1));
-        return `${makeIndent(depth)}  ${key}: {\n${newChildren.join(
-          '\n'
-        )}\n${makeIndent(depth)}  }`;
+        return `${makeIndent(depth)}  ${key}: {\n${newChildren.join('\n')}\n${makeIndent(depth)}  }`;
       }
 
       case 'added': {
@@ -47,10 +45,7 @@ export default (tree) => {
           value1,
           depth
         )}`;
-        const secondElement = `${makeIndent(depth)}+ ${key}: ${newValue(
-          value2,
-          depth
-        )}`;
+        const secondElement = `${makeIndent(depth)}+ ${key}: ${newValue(value2, depth)}`;
         return `${firstElement}\n${secondElement}`;
       }
 

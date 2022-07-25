@@ -73,9 +73,7 @@ test('genDiff wrong filename file:json format:stylish', () => {
   const path1 = `${__dirname}/../__fixtures__/file1.json`;
   const path2 = `${__dirname}/../__fixtures__/file.txt`;
   const filename = 'txt';
-  expect(() => genDiff(path1, path2)).toThrow(
-    `Unknown filename: '${filename}'!`
-  );
+  expect(() => genDiff(path1, path2)).toThrow(`Unknown filename: '${filename}'!`);
 });
 
 test('genDiff wrong format file:json format:stylish', () => {
@@ -84,7 +82,5 @@ test('genDiff wrong format file:json format:stylish', () => {
   const path1 = `${__dirname}/../__fixtures__/file1.json`;
   const path2 = `${__dirname}/../__fixtures__/file2.json`;
   const formatName = 'yaml';
-  expect(() => genDiff(path1, path2, formatName)).toThrow(
-    `Unknown format: '${formatName}'!`
-  );
+  expect(() => genDiff(path1, path2, formatName)).toThrow(`Unknown format: '${formatName}'!`);
 });

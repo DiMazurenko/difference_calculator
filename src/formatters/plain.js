@@ -26,9 +26,7 @@ export default (tree) => {
       }
 
       case 'added': {
-        return `Property '${path}${key}' was added with value: ${newValue(
-          value
-        )}`;
+        return `Property '${path}${key}' was added with value: ${newValue(value)}`;
       }
 
       case 'deleted': {
@@ -36,9 +34,7 @@ export default (tree) => {
       }
 
       case 'changed': {
-        return `Property '${path}${key}' was updated. From ${newValue(
-          value1
-        )} to ${newValue(value2)}`;
+        return `Property '${path}${key}' was updated. From ${newValue(value1)} to ${newValue(value2)}`;
       }
 
       case 'unchanged': {
