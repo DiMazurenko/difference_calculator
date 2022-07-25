@@ -1,5 +1,6 @@
 import makeStylish from './stylish.js';
 import makePlain from './plain.js';
+import makeJSON from './json.js';
 
 export default (tree, formatName) => {
   switch (formatName) {
@@ -8,6 +9,9 @@ export default (tree, formatName) => {
     }
     case 'plain': {
       return makePlain(tree);
+    }
+    case 'json': {
+      return makeJSON(tree);
     }
     default:
       return console.log('wrooong');
