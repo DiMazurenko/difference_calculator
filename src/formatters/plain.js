@@ -11,7 +11,7 @@ export default (tree) => {
 
   const iter = (node, path = '') => {
     const {
-      key, value, type, children, value1, value2
+      key, value, type, children, value1, value2,
     } = node;
 
     switch (type) {

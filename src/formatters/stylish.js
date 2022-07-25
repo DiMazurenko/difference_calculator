@@ -18,7 +18,7 @@ export default (tree) => {
 
   const iter = (node, depth = 0) => {
     const {
-      key, value, type, children, value1, value2
+      key, value, type, children, value1, value2,
     } = node;
 
     switch (type) {
@@ -43,7 +43,7 @@ export default (tree) => {
       case 'changed': {
         const firstElement = `${makeIndent(depth)}- ${key}: ${newValue(
           value1,
-          depth
+          depth,
         )}`;
         const secondElement = `${makeIndent(depth)}+ ${key}: ${newValue(value2, depth)}`;
         return `${firstElement}\n${secondElement}`;
