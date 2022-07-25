@@ -1,7 +1,7 @@
 import { load } from 'js-yaml';
 
-const parse = (data, fileName) => {
-  switch (fileName) {
+const parse = (data, formatName) => {
+  switch (formatName) {
     case 'json':
       return JSON.parse(data);
     case 'yaml':
@@ -9,7 +9,7 @@ const parse = (data, fileName) => {
     case 'yml':
       return load(data);
     default:
-      return console.log('wrooong');
+      throw new Error(`Unknown filename: '${formatName}'!`);
   }
 };
 

@@ -14,6 +14,6 @@ export default (tree, formatName) => {
       return makeJSON(tree);
     }
     default:
-      return console.log('wrooong');
+      throw new Error(`Unknown format: '${formatName}'!`);
   }
 };
