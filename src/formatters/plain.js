@@ -17,29 +17,23 @@ export default (tree) => {
     switch (type) {
       case 'root': {
         const newChildren = children.flatMap((child) => iter(child, key));
-        return newChildren.join('\n');
-      }
+        return newChildren.join('\n'); }
 
       case 'parent': {
         const newChildren = children.flatMap((child) => iter(child, `${path}${key}.`));
-        return newChildren.join('\n');
-      }
+        return newChildren.join('\n'); }
 
       case 'added': {
-        return `Property '${path}${key}' was added with value: ${newValue(value)}`;
-      }
+        return `Property '${path}${key}' was added with value: ${newValue(value)}`; }
 
       case 'deleted': {
-        return `Property '${path}${key}' was removed`;
-      }
+        return `Property '${path}${key}' was removed`; }
 
       case 'changed': {
-        return `Property '${path}${key}' was updated. From ${newValue(value1)} to ${newValue(value2)}`;
-      }
+        return `Property '${path}${key}' was updated. From ${newValue(value1)} to ${newValue(value2)}`; }
 
       case 'unchanged': {
-        return [];
-      }
+        return []; }
 
       default:
         throw new Error(`Unknown type: '${type}' of node!`);
