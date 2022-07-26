@@ -4,9 +4,10 @@ import { dirname } from 'path';
 import genDiff from '../src/index.js';
 import { readFile } from '../src/utility.js';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 test('genDiff file:json formst:stylish', () => {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
   const path1 = `${__dirname}/../__fixtures__/file1.json`;
   const path2 = `${__dirname}/../__fixtures__/file2.json`;
   const result = readFile(`${__dirname}/../__fixtures__/result_Stylish`);
@@ -14,8 +15,6 @@ test('genDiff file:json formst:stylish', () => {
 });
 
 test('genDiff file:yaml format:stylish', () => {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
   const path1 = `${__dirname}/../__fixtures__/file1.yaml`;
   const path2 = `${__dirname}/../__fixtures__/file2.yml`;
   const result = readFile(`${__dirname}/../__fixtures__/result_Stylish`);
@@ -23,8 +22,6 @@ test('genDiff file:yaml format:stylish', () => {
 });
 
 test('genDiff file:json format:plain', () => {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
   const path1 = `${__dirname}/../__fixtures__/file1.json`;
   const path2 = `${__dirname}/../__fixtures__/file2.json`;
   const result = readFile(`${__dirname}/../__fixtures__/result_Plain`);
@@ -32,8 +29,6 @@ test('genDiff file:json format:plain', () => {
 });
 
 test('genDiff file:yaml format:plain', () => {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
   const path1 = `${__dirname}/../__fixtures__/file1.yaml`;
   const path2 = `${__dirname}/../__fixtures__/file2.yml`;
   const result = readFile(`${__dirname}/../__fixtures__/result_Plain`);
@@ -41,8 +36,6 @@ test('genDiff file:yaml format:plain', () => {
 });
 
 test('genDiff file:json format:json', () => {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
   const path1 = `${__dirname}/../__fixtures__/file1.json`;
   const path2 = `${__dirname}/../__fixtures__/file2.json`;
   const result = readFile(`${__dirname}/../__fixtures__/result_JSON`);
@@ -50,8 +43,6 @@ test('genDiff file:json format:json', () => {
 });
 
 test('genDiff file:yaml format:json', () => {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
   const path1 = `${__dirname}/../__fixtures__/file1.yaml`;
   const path2 = `${__dirname}/../__fixtures__/file2.yml`;
   const result = readFile(`${__dirname}/../__fixtures__/result_JSON`);
@@ -59,8 +50,6 @@ test('genDiff file:yaml format:json', () => {
 });
 
 test('genDiff wrong result file:json format:stylish', () => {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
   const path1 = `${__dirname}/../__fixtures__/file1.json`;
   const path2 = `${__dirname}/../__fixtures__/file2.json`;
   const result = readFile(`${__dirname}/../__fixtures__/wrong_result_Stylish`);
@@ -68,8 +57,6 @@ test('genDiff wrong result file:json format:stylish', () => {
 });
 
 test('genDiff wrong filename file:json format:stylish', () => {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
   const path1 = `${__dirname}/../__fixtures__/file1.json`;
   const path2 = `${__dirname}/../__fixtures__/file.txt`;
   const filename = 'txt';
@@ -77,8 +64,6 @@ test('genDiff wrong filename file:json format:stylish', () => {
 });
 
 test('genDiff wrong format file:json format:stylish', () => {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
   const path1 = `${__dirname}/../__fixtures__/file1.json`;
   const path2 = `${__dirname}/../__fixtures__/file2.json`;
   const formatName = 'yaml';
